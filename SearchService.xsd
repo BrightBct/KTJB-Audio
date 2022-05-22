@@ -1,0 +1,110 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+                targetNamespace="http://ktjb-audio.com/services/search/xsd">
+
+                <!--Search-->
+
+                <element name="searchInput" type="searchType"/>
+                <complexType name="searchType">
+                    <sequence>
+                        <element name="searchInput" type="string"/>                        
+                    </seqeunce>
+                </complexType>
+
+                <element name="searchOutput" type="showSearchResultType"/>
+                <complexType name="showSearchResultType">
+                    <seqeunce>
+                        <element name="topResult" type="string"/>
+                        <element name="musicName" type="string"/>
+                        <element name="artisName" type="string"/>
+                        <element name="albumsName" type="string"/>
+                        <element name="playlistName" type="string"/>
+                    </seqeunce>
+                </complexType>
+
+                <element name="fault" type="faultType"/>
+                <complexType name="faultType">
+                    <element name="error" default="No results found"/>
+                </complexType>
+
+                <!--SearchToAddMusicInPlaylist-->
+
+                <element name="searchToAddMusicInPlaylistInput" type="searchType"/>
+
+                <element name="searchToAddMusicInPlaylistOutput" type="showSearchResultInPlaylistType"/>
+                <complexType name="showSearchResultInPlaylistType">
+                    <element name="musicName" type="string"/>
+                    <element name="artisName" type="string"/>
+                    <element name="albumsName" type="string"/>
+                </complexType>
+
+                <element name="faultInPlaylist" type="faultInPlaylistType"/>
+                <complexType name="faultInPlaylistType">
+                    <element name="error" default="No results found"/>
+                </complexType>
+
+                <!--SearchMusicInPlaylist-->
+
+                <element name="searchMusicInPlaylistInput" type="searchType"/>
+
+                <element name="searchMusicInPlaylistOutput" type="showSearchResultMusicInPlaylistType"/>
+                <complexType name="showSearchResultMusicInPlaylistType">
+                    <seqeunce>
+                        <element name="numberOfMusic" type="string"/>
+                        <element name="title">
+                            <complexType>
+                                <element name="musicName" type="string"/>
+                                <element name="artisName" type="string"/>
+                            </complexType>
+                        </element>
+                        <element name="albumName" type="string"/>
+                        <element name="dateAdded" type="string"/>
+                        <element name="durationOfMusic" type="string"/>
+                    </seqeunce>
+                </complexType>
+
+                <!--SearchMusicFromFavorite-->
+
+                <element name="searchMusicFromFavoriteInput" type="searchType"/>
+
+                <element name="searchMusicFromFavoriteOutput" type="showSearchResultMusicFromFavoriteType"/>
+                <complexType name="showSearchResultMusicFromFavoriteType">
+                    <seqeunce>
+                        <element name="numberOfMusic" type="string"/>
+                        <element name="title">
+                            <complexType>
+                                <element name="musicName" type="string"/>
+                                <element name="artisName" type="string"/>
+                            </complexType>
+                        </element>
+                        <element name="albumName" type="string"/>
+                        <element name="dateAdded" type="string"/>
+                        <element name="durationOfMusic" type="string"/>
+                    </seqeunce>
+                </complexType>
+
+                <!--BrowseAllGenres-->
+
+                <element name="browseAllGenres" type="browseAllGenresType"/>
+                <complexType name="browseAllGeresType"/>
+                    <element name="Pop" type="string"/>
+                    <element name="Chill" type="String"/>
+                    <element name="Jazz" type="string"/>
+                    <element name="Party" type="string"/>
+                    <!--and so on-->
+                </complexType>
+
+                <!--BrowseByGenre-->
+
+                <element name="browseByGenre">
+                    <simpleType>
+                        <restroction base="string">
+                            <enumeration value="Pop"/>
+                            <enumeration value="Chill"/>
+                            <enumeration value="Jazz"/>
+                            <enumeration value="Party"/>
+                            <!--and so on-->
+                        </restroction>
+                    </simpleType>
+                </element>
+
+        </schema>

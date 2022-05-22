@@ -1,0 +1,156 @@
+<definitions name= "Search"
+    targetNamespace="http://ktjb-audio.com/wsdl"
+        xmlns:tns="http://ktjb-audio.com/wsdl"
+        xmlns:xsd="http://ktjb-audio.com/xsd"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap"
+        xmlns="http://schemas.xmlsoap.org/wsdl">
+    <types>
+        <schema>
+            <import namespace="http://ktjb-audio.com/services/search/xsd/" schemaLocation="SearchService.xsd"/>
+        </schema>
+    </types>
+
+    <message name="GetSearchInput">
+        <part name="body" element="xsd:searchInput"/>
+    </message>
+
+    <message name="GetSearchOutput">
+        <part name="body" element="xsd:searchOutput"/>
+    </message>
+
+    <message name="GetSearchFault">
+        <part name="body" element="xsd:fault"/>
+    </message>
+
+    <message name="GetMusicToAddInPlaylistInput">
+        <part name="body" element="xsd:searchToAddMusicInPlaylistInput"/>
+    </message>
+
+    <message name="GetMusicToAddInPlaylistOutput">
+        <part name="body" element="xsd:searchToAddMusicInPlaylistOutput"/>
+    </message>
+
+    <message name="GetMusicToaddInPlaylistFault">
+        <part name="body" element="xsd:faultInPlaylist"/>
+    </message>
+
+    <message name="GetMusicInPlaylistInput">
+        <part name="body" element="xsd:searchMusicInPlaylistInput"/>
+    </message>
+
+    <message name="GetMusicInPlaylistOutput">
+        <part name="body" element="xsd:searchMusicInPlaylistOutput"/>
+    </message>
+
+    <message name="GetMusicFromFavoriteInput">
+        <part name="body" element="xsd:searchMusicFromFavorite"/>
+    </message>
+
+    <message name="GetMusicFromFavoriteOutput">
+        <part name="body" element="xsd:searchMusicFromFavorite"/>
+    </message>
+
+    <message name="GetAllGenresOutput">
+        <part name="body" element="xsd:browseAllGenres"/>
+    </message>
+
+    <message name="GetByGenreOutput">
+        <part name="body" element="xsd:browseByGenre"/>
+    </message>
+
+    <portType name="SearchPortType">
+        <operation name="GetSearch">
+            <input message="tns:GetSearchInput"/>
+            <output message="tns:GetSearchOutput"/>
+            <fault message="tns:GetSearchFault"/>
+        </operation>
+
+        <operation name="GetSearchToAddInPlaylist">
+            <input message="tns:GetMusicToAddInPlaylistInput"/>
+            <output message="tns:GetMusicToAddInPlaylistOutput"/>
+            <fault message="tns:GetMusicToaddInPlaylistFault"/>
+        </operation>
+
+        <operation name="GetSearchMusicInPlaylist">
+            <input message="tns:GetMusicInPlaylistInput"/>
+            <output message="tns:GetMusicInPlaylistOutput"/>
+        </operation>
+
+        <operation name="GetSearchMusicFromFavorite">
+            <input message="tns:GetMusicFromFavoriteInput"/>
+            <output message="tns:GetMusicFromFavoriteOutput"/>
+        </operation>
+
+        <operation name="GetAllGenres">
+            <output message="tns:GetAllGenresOutput"/>
+        </operation>
+
+        <operation name="GetByGenre">
+            <output message="tns:GetByGenreOutput"/>
+        </operation>
+    </portType>
+
+    <binding name="SearchSoapBinding" type="tns:SearchPortType">
+        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http/"/>
+        <operation name="GetSearch">
+            <soap:operation soapAction="https://ktjb-audio.com/GetSearch"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault>
+                <soap:body use="literal"/>
+            </fault>
+        </operation>
+        <operation name="GetSearchToAddInPlaylist">
+            <soap:operation soapAction="https://ktjb-audio.com/GetSearchToAddInPlaylist"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault>
+                <soap:body use="literal"/>
+            </fault>
+        </operation>
+        <operation name="GetSearchMusicInPlaylist">
+            <soap:operation soapAction="https://ktjb-audio.com/GetSearchMusicInplaylist"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetSearchMusicFromFavorite">
+            <soap:operation soapAction="https://ktjb-audio.com/GetSearchMusicFromFavorite"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>   
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetAllGenres">
+            <soap:operation soapAction="https://ktjb-audio.com/GetAllGenres"/>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetByGenre">
+            <soap:operation soapAction="https://ktjb-audio.com/GetByGenre"/>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <service name="SearchService">
+            <documentation>Search Service</documentation>
+            <port name="SearchPort" binding="tns:SearchPort">
+                <soap:address location="http://ktjb-audio.com/search"/>
+            </port>
+        </service>
+</definitions> 
