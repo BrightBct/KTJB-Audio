@@ -1,0 +1,150 @@
+<wsdl:definitions    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                xmlns:tns="http://ktjb-audio.com/services/ArtistService/wsdl/" 
+                xmlns:wsdl="http://ktjb-audio.com/services/ArtistService/wsdl/" 
+                xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                xmlns="https://www.w3schools.com" 
+                name="ArtistService" 
+                targetNamespace="http://ktjb-audio.com/services/ArtistService/wsdl/">
+
+    <wsdl:types>
+        <xs:schema>
+            <xs:import namespace="http://ktjb-audio.com/services/artist/xsd/" schemaLocation="ArtistService.xsd"/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetCreateArtistProfile">
+        <wsdl:part name="body" element="xsd:createArtistProfile" />
+    </wsdl:message>
+
+    <wsdl:message name="GetArtistProfile">
+        <wsdl:part name="body" element="xsd:artistProfile" />
+    </wsdl:message>
+
+    <wsdl:message name="GetArtistProfileFault">
+        <wsdl:part name="body" element="xsd:artistProfileFault" />
+    </wsdl:message>
+
+    <wsdl:message name="GetAddMusicToSpotify">
+        <wsdl:part name="body" element="xsd:addMusicToSpotify" />
+    </wsdl:message>
+
+    <wsdl:message name="GetMusic">
+        <wsdl:part name="body" element="xsd:music" />
+    </wsdl:message>
+
+    <wsdl:message name="GetAddCanvasForMusic">
+        <wsdl:part name="body" element="xsd:addCanvasForMusic" />
+    </wsdl:message>
+
+    <wsdl:message name="GetCanvasForMusic">
+        <wsdl:part name="body" element="xsd:canvasForMusic" />
+    </wsdl:message>
+
+    <wsdl:message name="GetCreatePromoCard">
+        <wsdl:part name="body" element="xsd:createPromoCard" />
+    </wsdl:message>
+
+    <wsdl:message name="GetPromoCard">
+        <wsdl:part name="body" element="xsd:promoCard" />
+    </wsdl:message>
+
+    <wsdl:message name="GetCreateAds">
+        <wsdl:part name="body" element="createAds" />
+    </wsdl:message>
+
+    <wsdl:message name="GetGenerateAds">
+        <wsdl:part name="body" element="xsd:generateAds" />
+    </wsdl:message>
+
+    <wsdl:message name="GetShowAds">
+        <wsdl:part name="body" element="showAds" />
+    </wsdl:message>
+
+    <wsdl:portType name="ArtistService">
+        <wsdl:operation name="GetArtistProfile">
+            <wsdl:input message="tns:GetCreateArtistProfile" />
+            <wsdl:output message="tns:GetArtistPorfile" />
+            <wsdl:fault message="tns:GetArtistProfileFault" />
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMusicToSpotify">
+            <wsdl:input message="tns:GetAddCanvasForMusic" />
+            <wsdl:output message="tns:GetMusic" />
+        </wsdl:operation>
+
+        <wsdl:operation name="GetCanvasForMusic">
+            <wsdl:input message="tns:GetAddMusicToSpotify" />
+            <wsdl:output message="tns:GetCanvasForMusic" />
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPromoCard">
+            <wsdl:input message="tns:GetCreatePromoCard" />
+            <wsdl:output wsdl:message="tns:GetPromoCard" />
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAds">
+            <wsdl:input message="tns:GetCreateAds" />
+            <wsdl:output message="tns:GetGenerateAds" />
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="ArtistServiceSoapBinding" type="tns:ArtistService">
+        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http/" />
+        <wsdl:operation name="GetArtistProfile">
+            <soap:operation soapAction="https://ktjb-audio.com/GetArtistProfile" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <fault>
+                <soap:body use="literal" />
+            </fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetMusicToSpotify">
+            <soap:operation soapAction="https://ktjb-audio.com/GetMusicToSpotify" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCanvasForMusic">
+            <soap:operation soapAction="https://ktjb-audio.com/GetCanvasForMusic" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPromoCard">
+            <soap:operation soapAction="https://ktjb-audio.com/GetPromoCard" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAds">
+            <soap:operation soapAction="https://ktjb-audio.com/GetAds" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding> 
+
+    <wsdl:service name="ArtistService">
+        <wsdl:documentation>ArtistService</wsdl:documentation>
+        <wsdl:port name="Artistwsdl:portType" binding="tns:Artistwsdl:portType">
+            <soap:address location="http://ktjb-audio.com/artist" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

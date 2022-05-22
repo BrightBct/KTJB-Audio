@@ -1,0 +1,179 @@
+<xs:schema xmlns="https://www.w3schools.com"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://ktjb-audio.com/services/artist/xsd/">
+
+    <xs:include schemaLocation="UserService.xsd"/>
+
+    <!-- CreateArtistProfile -->
+    <xs:element name="createArtistProfile" type="createArtistProfileType" />
+    <xs:complexType name="createArtistProfileType">
+        <xs:sequence>
+            <xs:element name="login" type="loginType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="artistProfile" type="artistProfileType" />
+    <xs:complexType name="artistProfileType">
+        <xs:sequence>
+            <xs:element name="artistProfileName" type="string" />
+            <xs:element name="artistPicture" type="anyURI" />
+            <xs:element name="artistProfileUrl" type="anyURI" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="artistProfileFault" type="faultType" />
+    <xs:complexType name="faultType">
+        <xs:element name="error" default="Login failed" />
+    </xs:complexType>
+
+    <!-- AddMusicToktjb-audio.com-->
+    <xs:element name="addMusicToSpotify" type="addMusicToSpotifyType" />
+    <xs:complexType name="addMusicToSpotifyType">
+        <xs:sequence>
+            <xs:element name="uploadMusicArt" type="anyURI" />
+            <xs:element name="uploadMusicFile" type="short" />
+            <xs:element name="musicInfo" type="musicInfoType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="musicInfoType">
+        <xs:sequence>
+            <xs:element name="musicName" type="string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="musicPerformedBy" type="string" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="musicWrittenBy" type="string" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="musicProducedBy" type="string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="musicSource" type="string" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="music" type="musicType" />
+    <xs:complexType name="musicType">
+        <xs:sequence>
+            <xs:element name="musicArt" type="anyURI" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="musicFile" type="short" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="musicInfo" type="musicInfoType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- AddCanvasForMusic -->
+    <xs:element name="addCanvasForMusic" type="addCanvasForMusicType" />
+    <xs:complexType name="addCanvasForMusicType">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="picture" type="anyURI" minOccurs="0"/>
+                <xs:element name="video" type="anyURI" minOccurs="0"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="canvasForMusic" type="canvasForMusic" />
+    <xs:complexType name="canvasForMusic">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="picture" type="anyURI" minOccurs="0"/>
+                <xs:element name="video" type="anyURI" minOccurs="0"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- CreatePromoCard -->
+    <xs:element name="createPromoCard" type="createPromoCareType" />
+    <xs:complexType name="createPromoCardType">
+        <xs:sequence>
+            <xs:element name="promoCardName" type="string" />
+            <xs:element name="promoContent" type="string" />
+            <xs:element name="artistPictureProfile" type="anyURI" />
+            <xs:element name="promoTheme" type="promoThemeType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="promoThemeType">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="artistTheme" type="anyURI" />
+                <xs:element name="milestoneTheme" type="anyURI" />
+                <xs:element name="liveShowTheme" type="anyURI" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="promoCard" type="promoCardType" />
+    <xs:complexType name="promoCardType">
+        <xs:sequence>
+            <xs:element name="artistPictureProfile" type="anyURI" />
+            <xs:element name="promoContent" type="string" />
+            <xs:element name="promoTheme" type="promoThemeType" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- CreateAds -->
+    <xs:element name="createAds" type="createAdsType" />
+    <xs:complexType name="createAdsType">
+        <xs:sequence>
+            <xs:element name="audienceAds" type="audienceAdsType" />
+            <xs:element name="budgetAds" type="budgetAdsType" />
+            <xs:element name="scheduleAds" type="scheduleAdsType" />
+            <xs:element name="adsContent" type="adsContentType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="audienceAdsType">
+        <xs:sequence>
+            <xs:element name="audienceLocation">
+                <xs:simpleType>
+                    <xs:restriction base="string">
+                        <xs:enumeration value="Thailand" />
+                        <xs:enumeration value="Vietnam" />
+                        <xs:enumeration value="Singapore" />
+                        <!--and so on-->
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="audienceAge" type="rangeType" />
+            <xs:choice>
+                <xs:element name="all" type="string" />
+                <xs:element name="male" type="string" />
+                <xs:element name="female" type="string" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="rangeType">
+        <xs:sequence>
+            <xs:element name="startRange" type="int"/>
+            <xs:element name="endRange" type="int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="budgetAdsType">
+        <xs:sequence>
+            <xs:element name="budget" type="int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="scheduleAdsType">
+        <xs:sequence>
+            <xs:element name="startDate" type="date" />
+            <xs:element name="endDate" type="date" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="adsContentType">
+        <xs:sequence>
+            <xs:element name="adsContentName" type="string" />
+            <xs:element name="adsContentInfo" type="string" />
+            <xs:element name="adsPicture" type="anyURI" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="generateAds" type="generateAdsType" />
+    <xs:complexType name="generateAdsType">
+        <xs:sequence>
+            <xs:element name="adsLink" type="anyURI" />
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
