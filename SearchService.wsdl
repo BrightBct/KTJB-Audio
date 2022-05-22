@@ -146,11 +146,11 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-
-        <service name="SearchService">
-            <documentation>Search Service</documentation>
-            <port name="SearchPort" binding="tns:SearchPort">
-                <soap:address location="http://ktjb-audio.com/search"/>
-            </port>
-        </service>
+    </binding>
+    <service name="SearchService">
+        <documentation>Search Service</documentation>
+        <port name="SearchPort" binding="tns:SearchPort">
+            <soap:address location="http://ktjb-audio.com/search"/>
+        </port>
+    </service>    
 </definitions> 
