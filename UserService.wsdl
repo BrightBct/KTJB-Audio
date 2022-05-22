@@ -1,0 +1,191 @@
+<definitions	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+				xmlns:tns="http://ktjb-audio.com/services/UserService/wsdl/"
+				xmlns:wsdl="http://ktjb-audio.com/services/UserService/wsdl/"
+				xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				xmlns="https://www.w3schools.com"
+				name="Userservice"
+	            targetNamespace="http://ktjb-audio.com/services/UserService/wsdl/">
+    
+    <types>
+        <schema targetNamespace="http://ktjb-audio.com/xsd">
+            <import namespace="http://ktjb-audio.com/services/user/xsd/" schemaLocation="UserService.xsd"/>
+        </schema>
+    </types> 
+
+    <!--OP1-->
+
+			<message name="GetSignUpInput">
+				<part name="body" element="xsd:SignUpInput"/>
+			</message>
+		
+			<message name="GetSignUpOutput">
+				<part name="body" element="xsd:SignUpOutput"/>
+			</message>
+
+			<message name="GetSignUpFault">
+				<part name="body" element="xsd:fault"/>
+			</message>
+
+			<!--OP3-->
+			
+			<message name="GetSignInInput">
+				<part name="body" element="xsd:SignInInput"/>
+			</message>
+		
+			<message name="GetSignInOutput">
+				<part name="body" element="xsd:SignInOutput"/>
+			</message>
+
+			<message name="GetSignInFault">
+				<part name="body" element="xsd:fault"/>
+			</message>
+
+			<!--OP5-->
+
+			<message name="GetSignOutInput">
+				<part name="body" element="xsd:SignOutInput"/>
+			</message>
+		
+			<message name="GetSignOutOutput">
+				<part name="body" element="xsd:SignOutOutput"/>
+			</message>
+
+			<!--OP6-->
+
+			<message name="GetEditProfileInput">
+				<part name="body" element="xsd:EditProfileInput"/>
+			</message>
+		
+			<message name="GetEditProfileOutput">
+				<part name="body" element="xsd:EditProfileOutput"/>
+			</message>
+
+			<!--OP7-->
+
+			<message name="GetChangePlanInput">
+				<part name="body" element="xsd:ChangePlanInput"/>
+			</message>
+		
+			<message name="GetChangePlanOutput">
+				<part name="body" element="xsd:ChangePlanOutput"/>
+			</message>
+
+			<!--OP8-->
+
+			<message name="GetSetPasswordInput">
+				<part name="body" element="xsd:SetPasswordInput"/>
+			</message>
+		
+			<message name="GetSetPasswordOutput">
+				<part name="body" element="xsd:SetPasswordOutput"/>
+			</message>
+			
+			<!--OP9-->
+
+			<message name="GetShowAccountDetailOutput">
+				<part name="body" element="xsd:ShowAccountDetailOutput"/>
+			</message>
+			
+			<portType name="UserservicePortType">
+				<!--OP1-->
+				<operation name="GetSignUp">
+					<input message="tns:GetSignUpInput"/>
+					<output message="tns:GetSignUpOutput"/>
+					<fault message="tns:GetSignUpFault"/>
+				</operation>
+				<!--OP3-->
+				<operation name="GetSignIn">
+					<input message="tns:GetSignInInput"/>
+					<output message="tns:GetSignInOutput"/>
+					<fault message="tns:GetSignInFault"/>
+				</operation>
+				<!--OP5-->
+				<operation name="GetSignOut">
+					<output message="tns:GetSignOutOutput"/>
+				</operation>
+				<!--OP6-->
+				<operation name="GetEditProfile">
+					<input message="tns:GetEditProfileInput"/>
+					<output message="tns:GetEditProfileOutput"/>
+				</operation>
+				<!--OP7-->
+				<operation name="GetChangePlan">
+					<output message="tns:GetChangePlanOutput"/>
+				</operation>
+				<!--OP8-->
+				<operation name="GetSetPassword">
+					<input message="tns:GetSetPasswordInput"/>
+					<output message="tns:GetSetPasswordOutput"/>
+				</operation>
+				<!--OP9-->
+				<operation name="GetShowAccountDetail">
+					<output message="tns:GetShowAccountDetailOutput"/>
+				</operation>
+			</portType>
+
+			<binding name="UserServiceSoapBinding" type="tns:UserServicePortType">
+				<soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http/"/>
+				<operation name="GetSignUp">
+					<soap:operation soapAction="https://ktjb-audio.com/GetSignUp"/>
+					<input>
+						<soap:body use="literal"/>
+					</input>
+					<output>
+						<soap:body use="literal"/>
+					</output>
+				</operation>
+				<operation name="GetSignIn">
+					<soap:operation soapAction="https://ktjb-audio.com/GetSignIn"/>
+					<input>
+						<soap:body use="literal"/>
+					</input>
+					<output>
+						<soap:body use="literal"/>
+					</output>
+				</operation>
+				<operation name="GetSignOut">
+					<soap:operation soapAction="https://ktjb-audio.com/GetSignOut"/>
+					<output>
+						<soap:body use="literal"/>
+					</output>
+				</operation>
+				<operation name="GetEditProfile">
+					<soap:operation soapAction="https://ktjb-audio.com/GetEditProfile"/>
+					<input>
+						<soap:body use="literal"/>
+					</input>
+					<output>
+						<soap:body use="literal"/>
+					</output>
+				</operation>
+				<operation name="GetChangePlan">
+					<soap:operation soapAction="https://ktjb-audio.com/GetChangePlan"/>
+					<output>
+						<soap:body use="literal"/>
+					</output>
+				</operation>
+				<operation name="GetSetPassword">
+					<soap:operation soapAction="https://ktjb-audio.com/GetSetPassword"/>
+					<input>
+						<soap:body use="literal"/>
+					</input>
+					<output>
+						<soap:body use="literal"/>
+					</output>
+				</operation>
+				<operation name="GetShowAccountDetail">
+					<soap:operation soapAction="https://ktjb-audio.com/GetShowAccountDetail"/>
+					<output>   
+						<soap:body use="literal"/>
+					</output>
+				</operation>
+				
+				<service name="UserService"/>
+					<documentation>User Service</documentation>
+					<port name="UserServicePort" binding="tns:UserServicePortType">
+						<soap:address location="http://ktjb-audio.com/services/UserService"/>
+					</port>
+				
+            </binding>
+
+</definitions>

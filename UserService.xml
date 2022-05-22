@@ -1,0 +1,140 @@
+<schema xmlns="https://www.w3schools.com"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://ktjb-audio.com/services/user/xsd/">
+
+			<!--OP1 SignUp-->
+			
+			<element name="SignUp" type="SignUpType"/>
+			<complexType name="SignUpType">
+				<sequence>
+					<element name="UserSignUp" type="UserSignUpType"/>
+				</sequence>
+			</complexType>
+
+			<complexType name="UserSignUpType">
+				<sequence>
+					<choice>
+						<element name="email" type="email"/>
+                        <element name="username" type="string"/>
+					</choice>
+                    <element name="password" type="string"/>
+					<element name="profilename" type="string"/>
+					<element name="dateofbirth" type="date"/>
+					<choice>
+						<element name="male" type="boolean"/>
+                        <element name="female" type="boolean"/>
+					</choice>
+				</sequence>
+			</complexType>
+			
+
+			<!--OP3 SignIn-->
+			
+			<element name="SignIn" type="SignInType"/>
+			<complexType name="SignInType">
+				<sequence>
+					<element name="Login" type="LoginType"/>
+				</sequence>
+			</complexType>
+
+			<complexType name="LoginType">
+				<sequence>
+					<choice>
+						<element name="email" type="email"/>
+                        <element name="username" type="string"/>
+					</choice>
+					<element name="password" type="string"/>
+				</sequence>
+			</complexType>
+
+			<!--OP5 SignOut-->
+			<element name="SignOut" type="SignOutType"/>
+			<complexType name="SignOutType">
+				<sequence>
+					<element name="Logout" type="LogoutType"/>
+				</sequence>
+			</complexType>
+			
+			<complexType name="LogoutType">
+				<sequence>
+					<element name="logoutfromsystem" type="string"/>
+				</sequence>
+			</complexType>
+			
+			<!--OP6 EditProfile-->
+
+			<element name="EditProfile" type="EditProfileType"/>
+			<complexType name="EditProfileType">
+				<sequence>
+					<element name="EditUserProfile" type="EditUserProfileType"/>
+				</sequence>
+			</complexType>
+
+			<complexType name="EditUserProfileType">
+				<sequence>
+					<element name="editemail" type="string"/>
+					<choice>
+						<element name="male" type="boolean"/>
+						<element name="female" type="boolean"/>
+					</choice>
+					<element name="editdateofbirth" type="date"/>
+					<element name="editregion" type="string"/>
+				</sequence>
+			</complexType>
+			
+			<!--OP7 ChangePlan-->
+
+			<element name="ChangePlan" type="ChangePlanType"/>
+			<complexType name="ChangePlanType">
+				<sequence>
+					<element name="ChangeUserPlan" type="ChangeUserPlanType"/>
+				</sequence>
+			</complexType>
+
+			<complexType name="ChangeUserPlanType">
+				<sequence>
+					<choice>
+						<element name="premiumstudent" type="string"/>
+						<element name="premiumduo" type="string"/>
+						<element name="premiumfamily" type="string"/>
+						<element name="free" type="string"/>
+					</choice>
+				</sequence>
+			</complexType>
+
+			<!--OP8 SetPassword-->
+
+			<element name="SetPassword" type="SetPasswordType"/>
+			<complexType name="SetPasswordType">
+				<sequence>
+					<element name="SetUserPassword" type="SetUserPasswordType"/>
+				</sequence>
+			</complexType>
+			
+			<complexType name="SetUserPasswordType">
+				<sequence>
+					<element name="oldpassword" type="string"/>
+					<element name="newpassword" type="string"/>
+					<element name="confirmnewpassword" type="string"/>
+				</sequence>
+			</complexType>
+			
+			<!--OP9 ShowAccountDetail-->
+
+			<element name="ShowAccountDetail" type="ShowAccountDetailType"/>
+			<complexType name="ShowAccountDetailType">
+				<sequence>
+					<element name="ShowUserAccountDetail" type="ShowUserAccountDetailType"/>
+				</sequence>
+			</complexType>
+			
+			<complexType name="ShowUserAccountDetailType">
+				<sequence>
+					<element name="username" type="string"/>
+					<element name="email" type="string"/>
+					<element name="dateofbirth" type="date"/>
+					<element name="packageplan" type="string"/>
+				</sequence>
+			</complexType>
+
+</schema>
